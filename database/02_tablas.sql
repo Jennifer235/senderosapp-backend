@@ -85,17 +85,17 @@ CREATE INDEX idx_accesorios_categoria ON accesorios(categoria);
 -- DATOS INICIALES
 -- -------------------------------------------------------------
 -- Los mismos 10 senderos que hoy están fijos en tabla.ts
-INSERT INTO senderos (nombre, ubicacion, distancia_km, dificultad) VALUES
-    ('Camino a Monserrate',   'Bogotá', 2.5, 'Media'),
-    ('Quebrada La Vieja',     'Bogotá', 3.0, 'Media'),
-    ('Quebrada Las Delicias', 'Bogotá', 5.0, 'Alta'),
-    ('Aguas Claras',          'Bogotá', 4.5, 'Media'),
-    ('Chorro de Padilla',     'Bogotá', 5.0, 'Media'),
-    ('Cerro de Guadalupe',    'Bogotá', 3.0, 'Media'),
-    ('Parque Entrenubes',     'Bogotá', 6.0, 'Baja'),
-    ('La Aguadora',           'Bogotá', 4.0, 'Alta'),
-    ('Páramo de Cruz Verde',  'Bogotá', 8.0, 'Alta'),
-    ('Humedal La Conejera',   'Bogotá', 2.0, 'Baja');
+INSERT INTO senderos (nombre, descripcion, ubicacion, distancia_km, dificultad, duracion_horas, altitud_max_m) VALUES
+    ('Camino a Monserrate',   'Ascenso por el sendero peatonal empedrado hasta el santuario de Monserrate, con vista panorámica de Bogotá.', 'Bogotá', 2.5, 'Media', 1.5, 3152),
+    ('Quebrada La Vieja',     'Recorrido por bosque altoandino siguiendo la quebrada hasta el mirador de los cerros orientales.', 'Bogotá', 3.0, 'Media', 2.5, 3100),
+    ('Quebrada Las Delicias', 'Sendero junto a la quebrada en Chapinero Alto, con cascadas y pozos de agua cristalina.', 'Bogotá', 5.0, 'Alta', 2.0, 2900),
+    ('Aguas Claras',          'Caminata entre bosque nativo y quebradas en los cerros orientales de Usaquén.', 'Bogotá', 4.5, 'Media', 3.0, 3100),
+    ('Chorro de Padilla',     'Ruta exigente hasta la cascada del Chorro de Padilla, rodeada de vegetación de páramo.', 'Bogotá', 5.0, 'Media', 3.0, 3200),
+    ('Cerro de Guadalupe',    'Ascenso al cerro donde se ubica la estatua de la Virgen de Guadalupe, el punto más alto de los cerros tutelares.', 'Bogotá', 3.0, 'Media', 2.0, 3317),
+    ('Parque Entrenubes',     'Parque ecológico del sur de Bogotá con senderos suaves, miradores y flora nativa.', 'Bogotá', 6.0, 'Baja', 2.5, 3000),
+    ('La Aguadora',           'Sendero de pendiente fuerte con nacimientos de agua y bosque de niebla.', 'Bogotá', 4.0, 'Alta', 3.0, 3200),
+    ('Páramo de Cruz Verde',  'Travesía por el páramo con frailejones, lagunas y vistas hacia el oriente de la sabana.', 'Bogotá', 8.0, 'Alta', 5.0, 3500),
+    ('Humedal La Conejera',   'Recorrido plano por el humedal de Suba, ideal para avistamiento de aves.', 'Bogotá', 2.0, 'Baja', 1.0, 2560);
 
 INSERT INTO accesorios (nombre, descripcion, categoria, precio, stock) VALUES
     ('Bastón de trekking',   'Bastón ajustable de aluminio',         'Equipo',      85000, 20),
