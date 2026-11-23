@@ -5,11 +5,16 @@ import usuarios from './routes/usuarios';
 import senderos from './routes/senderos';
 import accesorios from './routes/accesorios';
 import login from './routes/login';
+import { prepararBaseDeDatos } from './preparar-db';
 
 const app = express();
 const PORT = Number(process.env.PORT ?? 3000);
 
-app.use(cors({ origin: 'http://localhost:4200' })); // permite peticiones desde Angular
+// Orígenes permitidos: Angular en tu computador y la versión publicada en GitHub Pages
+const origenes = (process.env.CORS_ORIGINS ?? 'http://localhost:4200,https://jennifer235.github.io')
+  .split(',')
+  .map((o) => o.trim());
+app.use(cors({ origin: origenes }));
 app.use(express.json());                           // lee el body en formato JSON
 
 // Rutas que usan los servicios de Angular
@@ -49,6 +54,11 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json({ error: 'Error interno del servidor' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor Senderosapp en http://localhost:${PORT}/api/v1`);
-});
+// Crea las tablas si la base está vacía y luego enciende el servidor
+prepararBaseDeDatos()
+  .catch((e) => console.error('No se pudo preparar la base de datos:', e.message))
+  .finally(() => {
+    app.listen(PORT, () => {
+      console.log(`Servidor Senderosapp escuchando en el puerto ${PORT} (/api/v1)`);
+    });
+  });
